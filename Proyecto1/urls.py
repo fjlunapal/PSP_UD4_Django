@@ -16,9 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from Proyecto1.views import saludo
+from Proyecto1.views import saludo, dameFecha, calculaEdad
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('saludo/', saludo),
+    path('fecha/', dameFecha),
+    path('edad/<int:agno>', calculaEdad),
 ]
