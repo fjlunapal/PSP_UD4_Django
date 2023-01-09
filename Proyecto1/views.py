@@ -1,17 +1,21 @@
 from django.http import HttpResponse
 import datetime
 
+from django.template import Template, Context
+
 def saludo(request):
 
-    documento="""<html>
-    <body>
-    <h1>
-    Hola mundo
-    </h1>
-    </body>
-    </html>"""
+    doc_externo=open("C:/Users/FJLun/Desktop/PROYECTO DJANGO/Proyecto1/Proyecto1/templates/template1.html")
 
-    return HttpResponse("HOLA MUNDO")
+    tmpl=Template(doc_externo.read())
+
+    doc_externo.close()
+
+    ctx=Context()
+
+    documento=tmpl.render(ctx)
+
+    return HttpResponse(documento)
 
 def dameFecha(request):
 
