@@ -3,7 +3,21 @@ import datetime
 
 from django.template import Template, Context
 
+class Persona(object):
+
+    def __init__(self, nombre, apellido):
+
+        self.nombre = nombre
+        self.apellido = apellido
+
+
 def saludo(request):
+
+    p1=Persona("Javier", "De la flor")
+    # nombre="Felix"
+    # apellido="Reyes"
+    temas_curso=["Plantillas", "Modelos", "Formularios", "Vistas", "Despliegues"]
+    ahora=datetime.datetime.now()
 
     doc_externo=open("C:/Users/FJLun/Desktop/PROYECTO DJANGO/Proyecto1/Proyecto1/templates/template1.html")
 
@@ -11,7 +25,7 @@ def saludo(request):
 
     doc_externo.close()
 
-    ctx=Context()
+    ctx=Context({"nombre_persona":p1.nombre, "apellido_persona":p1.apellido, "fecha_actual":ahora, "temas":temas_curso})
 
     documento=tmpl.render(ctx)
 

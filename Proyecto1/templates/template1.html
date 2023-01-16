@@ -1,9 +1,32 @@
 <html>
 
-<body>
-    <h1>
-        Hola mundo plantilla
-    </h1>
+<body style="background-color: rgb(134, 241, 170)">
+  <div>
+    <h2 style="font-family:verdana; color:rgb(211, 58, 198)">
+      Hola mundo plantilla
+    </h2>
+    <p>El nombre es: {{nombre_persona.upper}} {{apellido_persona.upper}}</p>
+    <p>la fecha de hoy es: {{fecha_actual.day}} / {{fecha_actual.month}} / {{fecha_actual.year}}</p>
+    <p><strong>Temas del curso:</strong></p>
+    <p>
+
+      <ul>
+
+        {% if temas %}
+          {% for elTema in temas %}
+            <li>{{elTema}}</li>
+
+          {% endfor %}
+        
+          {% else %}
+            <p>No hay elementos que mostrar</p>
+          {% endif %}
+
+      </ul>
+
+    </p>
+  </div>
+
 </body>
 
 </html>
