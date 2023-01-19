@@ -2,6 +2,8 @@ from django.http import HttpResponse
 import datetime
 
 from django.template import Template, Context
+from django.template.loader import get_template
+from django.shortcuts import render
 
 class Persona(object):
 
@@ -13,23 +15,25 @@ class Persona(object):
 
 def saludo(request):
 
-    p1=Persona("Javier", "De la flor")
+    p1=Persona("Javier", "Flor")
     # nombre="Felix"
     # apellido="Reyes"
     temas_curso=["Plantillas", "Modelos", "Formularios", "Vistas", "Despliegues"]
     ahora=datetime.datetime.now()
 
-    doc_externo=open("C:/Users/FJLun/Desktop/PROYECTO DJANGO/Proyecto1/Proyecto1/templates/template1.html")
+    #doc_externo=open("C:/Users/FJLun/Desktop/PROYECTO DJANGO/Proyecto1/Proyecto1/templates/template1.html")
 
-    tmpl=Template(doc_externo.read())
+    #tmpl=Template(doc_externo.read())
 
-    doc_externo.close()
+    #doc_externo.close()
 
-    ctx=Context({"nombre_persona":p1.nombre, "apellido_persona":p1.apellido, "fecha_actual":ahora, "temas":temas_curso})
+    #doc_externo=get_template('template1.html')
 
-    documento=tmpl.render(ctx)
+    #ctx=Context({"nombre_persona":p1.nombre, "apellido_persona":p1.apellido, "fecha_actual":ahora, "temas":temas_curso})
 
-    return HttpResponse(documento)
+    #documento=doc_externo.render({"nombre_persona":p1.nombre, "apellido_persona":p1.apellido, "fecha_actual":ahora, "temas":temas_curso})
+
+    return render(request, "template1.html", {"nombre_persona":p1.nombre, "apellido_persona":p1.apellido, "fecha_actual":ahora, "temas":temas_curso})
 
 def dameFecha(request):
 

@@ -1,11 +1,28 @@
 <html>
 
 <body style="background-color: rgb(134, 241, 170)">
+  {% include "superior/template2.html" %}
   <div>
     <h2 style="font-family:verdana; color:rgb(211, 58, 198)">
       Hola mundo plantilla
     </h2>
-    <p>El nombre es: {{nombre_persona.upper}} {{apellido_persona.upper}}</p>
+
+    {% comment %}
+      IGNORA ESTA PARTE
+    {% endcomment %}
+
+    {% if nombre_persona == 'Javier' %}
+
+    <p>Esta persona esta cursando 2 DAM</p>
+
+    {% else %}
+
+    <p>No hay nadie cursando</p>
+
+    {% endif %}
+
+
+    <p>El nombre es: {{nombre_persona|upper}} {{apellido_persona.upper}}</p>
     <p>la fecha de hoy es: {{fecha_actual.day}} / {{fecha_actual.month}} / {{fecha_actual.year}}</p>
     <p><strong>Temas del curso:</strong></p>
     <p>
@@ -14,7 +31,7 @@
 
         {% if temas %}
           {% for elTema in temas %}
-            <li>{{elTema}}</li>
+            <li>{{elTema|first|lower}}</li>
 
           {% endfor %}
         
