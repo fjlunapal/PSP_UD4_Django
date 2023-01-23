@@ -35,6 +35,16 @@ def saludo(request):
 
     return render(request, "template1.html", {"nombre_persona":p1.nombre, "apellido_persona":p1.apellido, "fecha_actual":ahora, "temas":temas_curso})
 
+def cursoDjango(request):
+    fecha_actual=datetime.datetime.now()
+
+    return render(request, "psp1.html", {"dameFecha":fecha_actual})
+
+def cursoCss(request):
+    fecha_actual=datetime.datetime.now()
+
+    return render(request, "css1.html", {"dameFecha":fecha_actual})
+    
 def dameFecha(request):
 
     fecha_actual=datetime.datetime.now()
@@ -63,3 +73,4 @@ def calculaEdad(request, agno):
     </html>""" %(agno, edadFutura)
 
     return HttpResponse(documento)
+    
